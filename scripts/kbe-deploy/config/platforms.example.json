@@ -440,6 +440,49 @@
           "package": "com.kaiboer.audioengine.test",
           "apk_path": "system_ext/priv-app/KbeAudioEngineTestClient/KbeAudioEngineTestClient.apk"
         },
+        "codec2-eac3": {
+          "description": "Codec2 E-AC3/JOC library, Codec2 service/store, and FFmpeg dependencies; codec XML requires image delivery",
+          "targets": [
+            "libcodec2_kaiboer_eac3joc",
+            "libcodec2_rk_store",
+            "android.hardware.media.c2@1.1-service",
+            "libavcodec",
+            "libavutil",
+            "libswresample"
+          ],
+          "artifacts": [
+            {
+              "path": "vendor/lib64/libcodec2_kaiboer_eac3joc.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/libcodec2_rk_store.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/bin/hw/android.hardware.media.c2@1.1-service",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/libavcodec.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/libavutil.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/libswresample.so",
+              "kind": "elf",
+              "bits": 64
+            }
+          ]
+        },
         "decoder": {
           "description": "Decoder + FFmpeg 分区库 + Engine APK 配套更新",
           "targets": [
