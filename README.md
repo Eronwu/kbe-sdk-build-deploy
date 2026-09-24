@@ -4,11 +4,11 @@ This repository contains a Codex skill and its Python build/deploy tool. It runs
 
 ## Install
 
-Clone this private repository into your Codex skills directory:
+Clone the repository into your Codex skills directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone git@github.com:Eronwu/kbe-sdk-build-deploy.git "${CODEX_HOME:-$HOME/.codex}/skills/kbe-sdk-build-deploy"
+git clone https://github.com/Eronwu/kbe-sdk-build-deploy.git "${CODEX_HOME:-$HOME/.codex}/skills/kbe-sdk-build-deploy"
 cd "${CODEX_HOME:-$HOME/.codex}/skills/kbe-sdk-build-deploy"
 ```
 
