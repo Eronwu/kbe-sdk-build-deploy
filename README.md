@@ -8,7 +8,7 @@ Clone this private repository into your Codex skills directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone <PRIVATE_REPO_URL> "${CODEX_HOME:-$HOME/.codex}/skills/kbe-build-deploy"
+git clone git@github.com:Eronwu/kbe-build-deploy.git "${CODEX_HOME:-$HOME/.codex}/skills/kbe-build-deploy"
 cd "${CODEX_HOME:-$HOME/.codex}/skills/kbe-build-deploy"
 ```
 
