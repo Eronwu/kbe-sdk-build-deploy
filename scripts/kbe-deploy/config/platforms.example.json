@@ -1,0 +1,728 @@
+{
+  "schema": 1,
+  "platforms": {
+    "rk3568": {
+      "id": "rk3568",
+      "ready": true,
+      "product": "rk3568_s",
+      "server": "USER@BUILD_HOST",
+      "remote_root": "/absolute/remote/rk3568_sdk",
+      "remote_jobs": "/absolute/remote/user-state/kbe-deploy/jobs",
+      "local_root": "/absolute/local/rk3568_sdk",
+      "lunch": "rk3568_s-userdebug",
+      "product_out": "/absolute/remote/rk3568_sdk/out/target/product/rk3568_s",
+      "device_match": {
+        "properties": {
+          "ro.board.platform": [
+            "rk356x"
+          ],
+          "ro.product.system.device": [
+            "rk3568_s"
+          ],
+          "ro.build.version.sdk": [
+            "32"
+          ]
+        },
+        "abis": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ]
+      },
+      "modules": {
+        "decoder": {
+          "description": "Decoder + FFmpeg 分区库 + Engine APK 配套更新",
+          "targets": [
+            "libkbedecoder_v1.kaiboer",
+            "libkbeffmpeg_avutil_60",
+            "libkbeffmpeg_avcodec_62",
+            "libkbeffmpeg_avformat_62",
+            "libkbeffmpeg_swresample_6",
+            "KbeAudioEngineService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/lib64/libkbedecoder_v1.kaiboer.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avutil_60.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avcodec_62.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avformat_62.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_swresample_6.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib/libkbedecoder_v1.kaiboer.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system_ext/lib/libkbeffmpeg_avutil_60.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system_ext/lib/libkbeffmpeg_avcodec_62.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system_ext/lib/libkbeffmpeg_avformat_62.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system_ext/lib/libkbeffmpeg_swresample_6.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "engine": {
+          "description": "Engine APK（内嵌 JNI 与 decoder）",
+          "targets": [
+            "KbeAudioEngineService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "audio-hal": {
+          "description": "主音频 HAL 与 USB HAL",
+          "targets": [
+            "audio.primary.rk30board",
+            "audio.usb.default"
+          ],
+          "artifacts": [
+            {
+              "path": "vendor/lib64/hw/audio.primary.rk30board.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/hw/audio.usb.default.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib/hw/audio.primary.rk30board.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "vendor/lib/hw/audio.usb.default.so",
+              "kind": "elf",
+              "bits": 32
+            }
+          ]
+        },
+        "audio-framework": {
+          "description": "AudioFlinger / client / policy 配套库",
+          "targets": [
+            "libaudioclient",
+            "libaudioflinger",
+            "libaudiopolicyservice",
+            "libaudiopolicymanagerdefault"
+          ],
+          "artifacts": [
+            {
+              "path": "system/lib64/libaudioclient.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudioflinger.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudiopolicyservice.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudiopolicymanagerdefault.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib/libaudioclient.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system/lib/libaudiopolicymanagerdefault.so",
+              "kind": "elf",
+              "bits": 32
+            }
+          ]
+        },
+        "services": {
+          "description": "services.jar + arm64 ART/ODEX/VDEX 四件套",
+          "targets": [
+            "services"
+          ],
+          "artifacts": [
+            {
+              "path": "system/framework/services.jar",
+              "kind": "jar"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.art",
+              "kind": "art"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.odex",
+              "kind": "odex"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.vdex",
+              "kind": "vdex"
+            }
+          ]
+        },
+        "settings": {
+          "description": "KBESettings system_ext APK",
+          "targets": [
+            "KBESettings"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/KBESettings/KBESettings.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbesettings",
+          "apk_path": "system_ext/app/KBESettings/KBESettings.apk"
+        },
+        "settings-backend": {
+          "description": "KbeSettingsBackend privileged system_ext APK",
+          "targets": [
+            "KbeSettingsBackend"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeSettingsBackend/KbeSettingsBackend.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.settingsbackend",
+          "apk_path": "system_ext/priv-app/KbeSettingsBackend/KbeSettingsBackend.apk"
+        },
+        "device-control": {
+          "description": "KBEDeviceControlService privileged APK with embedded native libraries",
+          "targets": [
+            "KBEDeviceControlService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KBEDeviceControlService/KBEDeviceControlService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.devicecontrolservice",
+          "apk_path": "system_ext/priv-app/KBEDeviceControlService/KBEDeviceControlService.apk"
+        },
+        "aaudio": {
+          "description": "AAudio + internal implementation (Direct PCM timestamp, arm64 + arm)",
+          "targets": [
+            "libaaudio",
+            "libaaudio_internal"
+          ],
+          "artifacts": [
+            {
+              "path": "system/lib64/libaaudio.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaaudio_internal.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib/libaaudio.so",
+              "kind": "elf",
+              "bits": 32
+            },
+            {
+              "path": "system/lib/libaaudio_internal.so",
+              "kind": "elf",
+              "bits": 32
+            }
+          ]
+        },
+        "engine-validated": {
+          "description": "Engine APK + native playback regression tests",
+          "targets": [
+            "KbeAudioEngineService",
+            "kbe_native_playback_core_test_results"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "playback-session-validated": {
+          "description": "Engine APK + playback session contract validation",
+          "targets": [
+            "KbeAudioEngineService",
+            "kbe_engine_contract_test_results"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "systemui": {
+          "description": "SystemUI system_ext privileged APK",
+          "targets": [
+            "SystemUI"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/SystemUI/SystemUI.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.android.systemui",
+          "apk_path": "system_ext/priv-app/SystemUI/SystemUI.apk"
+        },
+        "framework-res": {
+          "description": "Framework resource APK (includes recents component identity)",
+          "targets": [
+            "framework-res"
+          ],
+          "artifacts": [
+            {
+              "path": "system/framework/framework-res.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "android",
+          "apk_path": "system/framework/framework-res.apk"
+        },
+        "launcher-integration": {
+          "description": "Prebuilt Launcher and retained shared-library consumer build validation",
+          "targets": [
+            "KBELauncher",
+            "KBESettings",
+            "KBESetupWizard",
+            "KBEDeviceControlService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KBELauncher/KBELauncher.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.launcher",
+          "apk_path": "system_ext/priv-app/KBELauncher/KBELauncher.apk"
+        },
+        "media-center": {
+          "description": "KbeMediaCenterService APK",
+          "targets": [
+            "KbeMediaCenterService",
+            "KbeMediaCenterPlaylistHostTests"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeMediaCenterService/KbeMediaCenterService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.mediacenter",
+          "apk_path": "system_ext/priv-app/KbeMediaCenterService/KbeMediaCenterService.apk"
+        },
+        "search-app": {
+          "description": "kbesearch APK",
+          "targets": [
+            "kbesearch"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/kbesearch/kbesearch.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbesearch",
+          "apk_path": "system_ext/app/kbesearch/kbesearch.apk"
+        },
+        "player-app": {
+          "description": "Kbeplayer APK",
+          "targets": [
+            "Kbeplayer"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/Kbeplayer/Kbeplayer.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbeplayer",
+          "apk_path": "system_ext/app/Kbeplayer/Kbeplayer.apk"
+        }
+      },
+      "verified_at": "2026-09-05",
+      "verification": "Linux-201 current installed output paths and source build declarations; no new build/device deployment"
+    },
+    "rk3576": {
+      "id": "rk3576",
+      "ready": true,
+      "product": "rk3576_u",
+      "server": "USER@BUILD_HOST",
+      "remote_root": "/absolute/remote/rk3576_sdk",
+      "remote_jobs": "/absolute/remote/user-state/kbe-deploy/jobs",
+      "local_root": "/absolute/local/rk3576_sdk",
+      "lunch": "rk3576_u-userdebug",
+      "product_out": "/absolute/remote/rk3576_sdk/out/target/product/rk3576_u",
+      "device_match": {
+        "properties": {
+          "ro.board.platform": [
+            "rk3576"
+          ],
+          "ro.product.system.device": [
+            "rk3576_u"
+          ],
+          "ro.build.version.sdk": [
+            "34"
+          ]
+        },
+        "abis": [
+          "arm64-v8a"
+        ]
+      },
+      "modules": {
+        "engine-test-client": {
+          "description": "KbeAudioEngineTestClient debug-only 验证 APK",
+          "targets": [
+            "KbeAudioEngineTestClient"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineTestClient/KbeAudioEngineTestClient.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine.test",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineTestClient/KbeAudioEngineTestClient.apk"
+        },
+        "decoder": {
+          "description": "Decoder + FFmpeg 分区库 + Engine APK 配套更新",
+          "targets": [
+            "libkbedecoder_v1.kaiboer",
+            "libkbeffmpeg_avutil_60",
+            "libkbeffmpeg_avcodec_62",
+            "libkbeffmpeg_avformat_62",
+            "libkbeffmpeg_swresample_6",
+            "KbeAudioEngineService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/lib64/libkbedecoder_v1.kaiboer.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avutil_60.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avcodec_62.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_avformat_62.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/lib64/libkbeffmpeg_swresample_6.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "engine": {
+          "description": "Engine APK（内嵌 JNI 与 decoder）",
+          "targets": [
+            "KbeAudioEngineService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        },
+        "audio-hal": {
+          "description": "主音频 HAL 与 USB HAL",
+          "targets": [
+            "audio.primary.rk30board",
+            "audio.usb.default"
+          ],
+          "artifacts": [
+            {
+              "path": "vendor/lib64/hw/audio.primary.rk30board.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "vendor/lib64/hw/audio.usb.default.so",
+              "kind": "elf",
+              "bits": 64
+            }
+          ]
+        },
+        "audio-framework": {
+          "description": "AudioFlinger / client / policy 配套库",
+          "targets": [
+            "libaudioclient",
+            "libaudioflinger",
+            "libaudiopolicyservice",
+            "libaudiopolicymanagerdefault"
+          ],
+          "artifacts": [
+            {
+              "path": "system/lib64/libaudioclient.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudioflinger.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudiopolicyservice.so",
+              "kind": "elf",
+              "bits": 64
+            },
+            {
+              "path": "system/lib64/libaudiopolicymanagerdefault.so",
+              "kind": "elf",
+              "bits": 64
+            }
+          ]
+        },
+        "services": {
+          "description": "services.jar + arm64 ART/ODEX/VDEX 四件套",
+          "targets": [
+            "services",
+            "out/target/product/rk3576_u/system/framework/oat/arm64/services.art",
+            "out/target/product/rk3576_u/system/framework/oat/arm64/services.odex",
+            "out/target/product/rk3576_u/system/framework/oat/arm64/services.vdex"
+          ],
+          "artifacts": [
+            {
+              "path": "system/framework/services.jar",
+              "kind": "jar"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.art",
+              "kind": "art"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.odex",
+              "kind": "odex"
+            },
+            {
+              "path": "system/framework/oat/arm64/services.vdex",
+              "kind": "vdex"
+            }
+          ]
+        },
+        "settings": {
+          "description": "KBESettings system_ext APK",
+          "targets": [
+            "KBESettings"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/KBESettings/KBESettings.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbesettings",
+          "apk_path": "system_ext/app/KBESettings/KBESettings.apk"
+        },
+        "settings-backend": {
+          "description": "KbeSettingsBackend privileged system_ext APK",
+          "targets": [
+            "KbeSettingsBackend"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeSettingsBackend/KbeSettingsBackend.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.settingsbackend",
+          "apk_path": "system_ext/priv-app/KbeSettingsBackend/KbeSettingsBackend.apk"
+        },
+        "systemui": {
+          "description": "SystemUI system_ext privileged APK",
+          "targets": [
+            "SystemUI"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/SystemUI/SystemUI.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.android.systemui",
+          "apk_path": "system_ext/priv-app/SystemUI/SystemUI.apk"
+        },
+        "framework-res": {
+          "description": "Framework resource APK (includes recents component identity)",
+          "targets": [
+            "framework-res"
+          ],
+          "artifacts": [
+            {
+              "path": "system/framework/framework-res.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "android",
+          "apk_path": "system/framework/framework-res.apk"
+        },
+        "launcher-integration": {
+          "description": "Prebuilt Launcher and retained shared-library consumer build validation",
+          "targets": [
+            "KBELauncher",
+            "KBESettings",
+            "KBESetupWizard",
+            "KBEDeviceControlService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KBELauncher/KBELauncher.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.launcher",
+          "apk_path": "system_ext/priv-app/KBELauncher/KBELauncher.apk"
+        },
+        "media-center": {
+          "description": "KbeMediaCenterService APK",
+          "targets": [
+            "KbeMediaCenterService",
+            "KbeMediaCenterPlaylistHostTests"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeMediaCenterService/KbeMediaCenterService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.mediacenter",
+          "apk_path": "system_ext/priv-app/KbeMediaCenterService/KbeMediaCenterService.apk"
+        },
+        "search-app": {
+          "description": "kbesearch APK",
+          "targets": [
+            "kbesearch"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/kbesearch/kbesearch.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbesearch",
+          "apk_path": "system_ext/app/kbesearch/kbesearch.apk"
+        },
+        "player-app": {
+          "description": "Kbeplayer APK",
+          "targets": [
+            "Kbeplayer"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/app/Kbeplayer/Kbeplayer.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.kbeplayer",
+          "apk_path": "system_ext/app/Kbeplayer/Kbeplayer.apk"
+        },
+        "device-control": {
+          "description": "KBEDeviceControlService privileged APK with embedded native libraries",
+          "targets": [
+            "KBEDeviceControlService"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KBEDeviceControlService/KBEDeviceControlService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.devicecontrolservice",
+          "apk_path": "system_ext/priv-app/KBEDeviceControlService/KBEDeviceControlService.apk"
+        },
+        "playback-session-validated": {
+          "description": "Engine APK + playback session contract validation",
+          "targets": [
+            "KbeAudioEngineService",
+            "kbe_engine_contract_test_results"
+          ],
+          "artifacts": [
+            {
+              "path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk",
+              "kind": "apk"
+            }
+          ],
+          "package": "com.kaiboer.audioengine",
+          "apk_path": "system_ext/priv-app/KbeAudioEngineService/KbeAudioEngineService.apk"
+        }
+      },
+      "verified_at": "2026-09-05",
+      "verification": "Linux-201 current installed output paths and source build declarations; no new build/device deployment"
+    }
+  }
+}

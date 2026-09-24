@@ -1,0 +1,6 @@
+interface:
+  display_name: "KBE 编译与库替换"
+  short_description: "通过 Linux-201 后台编译并校验、替换 RK3568/RK3576 组件"
+  default_prompt: "使用 $kbe-build-deploy 为指定平台编译并替换所需组件。"
+policy:
+  allow_implicit_invocation: true

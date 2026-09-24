@@ -1,0 +1,6 @@
+scripts/kbe-deploy/config/platforms.json
+**/__pycache__/
+**/*.pyc
+state/
+*.zip
+*.tar.gz
