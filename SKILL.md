@@ -1,5 +1,5 @@
 ---
-name: kbe-build-deploy
+name: kbe-sdk-build-deploy
 description: Build KBE RK3568 or RK3576 Android SDK components on a configured Linux server, collect artifacts, and optionally deploy or roll back a complete bundle on an explicitly selected ADB device. Use for KBE SDK module build, build-job status, artifact collection, and component replacement.
 ---
 

@@ -8,8 +8,8 @@ Clone this private repository into your Codex skills directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone git@github.com:Eronwu/kbe-build-deploy.git "${CODEX_HOME:-$HOME/.codex}/skills/kbe-build-deploy"
-cd "${CODEX_HOME:-$HOME/.codex}/skills/kbe-build-deploy"
+git clone git@github.com:Eronwu/kbe-sdk-build-deploy.git "${CODEX_HOME:-$HOME/.codex}/skills/kbe-sdk-build-deploy"
+cd "${CODEX_HOME:-$HOME/.codex}/skills/kbe-sdk-build-deploy"
 ```
 
 Requires Python 3.9+, Git, `ssh`, `scp`, and SSH access to the configured Linux SDK checkout. Device deployment also requires `adb`; APK updates may require `aapt2` or `aapt`. No Python package installation is needed. Each teammate uses their own SSH credentials and local SDK paths. The repository contains no credentials or job history.
